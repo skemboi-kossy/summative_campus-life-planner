@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+svg {
+    width: 17px;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1.4px solid lightgray;
+}
+
+nav .logo__div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .logo__div .logo {
+    width: 30px;
+    height: 30px;
+    background-color: #4F46E5;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .logo__div .logo__title a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+nav .logo__div .logo__title p {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+nav #div__right {
+    display: flex;
+    gap: 5px;
+}
+
+nav #div__right button {
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+nav #div__right #btn1 {
+    background-color: #4F46E5;
+    color: white;
+}
+
+nav #div__right #btn2,
+nav #div__right #btn3 {
+    background-color: white;
+    border: 1.5px solid gray;
+}
+
+nav #menu {
+    display: none;
+}
+
+section {
+    width: 100%;
+}
+
+section #tabs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+section button {
+    border: none;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    background-color: transparent;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+section button:hover {
+    border-bottom: 2px solid gray;
+    cursor: pointer;
+}
+
+section #tabs #tab1 {
+    color: #4F46E5;
+    border-bottom: 2px solid #4F46E5;
+}
+
+#cards {
+    width: 100%;
+    background-color: #e6e6f0;
+    padding: 20px;
+}
+
+#cards #card__holder {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#cards #card__holder #card {
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+
+#cards #card__holder #card #card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cards #card__holder #card #card__top h5 {
+    font-size: 10px;
+    color: gray;
+    font-weight: 600;
+}
+
+#cards #card__holder #card #card__bottom {
+    margin-top: 30px;
+    display: flex;
+    align-items: end;
+    gap: 5px;
+}
+
+#cards #card__holder #card #card__bottom p {
+    font-size: 10px;
+}
+
+#cards #recent {
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+#cards #recent #recent__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cards #recent #recent__top div #recent__top__title {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+#cards #recent #recent__top div p {
+    font-size: 11px;
+    color: gray;
+}
+
+#cards #recent #recent__top a {
+    display: flex;
+    font-size: 11px;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#cards #recent article {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#cards #recent article #article__title__holder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#cards #recent article #record__icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    border-radius: 8px;
+    color: #4F46E5;
+    justify-content: center;
+    align-items: center;
+    background-color: #d2d0f7;
+}
+
+#cards #recent article #article__title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+#cards #recent article #article__title h4 {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#cards #recent article #article__title p {
+    background-color: #d2d0f7;
+    color: #4F46E5;
+    padding: 5px 10px;
+    font-size: 9px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+#cards #recent article #article__footer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 2px;
+    font-size: 10px;
+}
+
+#cards #recent article #article__status {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    background-color: #85F8C4;
+    gap: 2px;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #005137;
+}
+
+
+
+
+
+
+/* Responsivess for Mobile */
+@media (max-width: 768px) {
+
+    nav .logo__div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav .logo__div .logo {
+        width: 30px;
+        height: 30px;
+        background-color: #4F46E5;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav #div__right {
+        display: none;
+    }
+
+    nav #menu {
+        display: block;
+        background-color: transparent;
+        border: none;
+    }
+
+    section #tabs {
+        display: none;
+    }
+
+    #cards #card__holder {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
