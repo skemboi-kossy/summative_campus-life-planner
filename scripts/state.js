@@ -74,7 +74,7 @@ export function getVisible() {
   const dir = parts[1] === 'asc' ? 1 : -1;
   list.sort((a,b) => {
     let result = 0;
-    if (field === 'title') result = a.title.localeCompare(.title);
+    if (field === 'title') result = a.title.localeCompare(title);
     else if (a[field] < b[field]) result = -1;
     else if (a[field] >  b[field]) result = 1;
   return result * dir;
@@ -85,12 +85,12 @@ return { list, re , invalid };
 function dateText(d) {
   const m = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
-  return d.getFullYera() + '-' + m + '-' + day;
+  return d.getFullYear() + '-' + m + '-' + day;
 }
 
 // Numbers for the dashboard
 export function getStats() {
-  let total =0;
+  let total = 0;
   const counts = {};
   for (const r of state.records) {
     total += r.duration;
@@ -101,7 +101,7 @@ export function getStats() {
     if (counts[t] > best) { best = counts[t]; topTag = t; }
   }
   const days = [];
-  letweek =0;
+  let week =0;
   for (let i = 6; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() -i);

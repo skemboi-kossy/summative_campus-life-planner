@@ -1,6 +1,6 @@
-import { state,startApp, addRecord, updateRecord, updateRecord, deleteRecord, replaceRecords, saveSettings } from './state.js';
+import { state,startApp, addRecord, updateRecord, deleteRecord, replaceRecords, saveSettings } from './state.js';
 import { renderAll, renderTable } from './ui.js' ;
-import { validaTitle, validDate, validDuration, validTag, RE } from './validators.js';
+import { validTitle, validDate, validDuration, validTag, RE } from './validators.js';
 import { validateRecords, downloadJSON } from './storage.js';
 
 const $ = id => document.getElementById(id);
@@ -22,7 +22,7 @@ const checks = [
   { input: 'tag' , error:'tag-error', test: validTag },
 ];
 
-$('task-form').addeventListener('submit', function (e) {
+$('task-form').addEventListener('submit', function (e) {
   e.preventDefault();
   let firstBad = null;
   for(const c of checks) {

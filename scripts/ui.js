@@ -11,7 +11,7 @@ export function formatTime(mins) {
 
 
 export function renderStats() {
-  const s = getStatus();
+  const s = getStats();
   const cap = state.settings.cap;
   $('summary').textContent = s.count + ' record - ' + formatTime(s.total) + 'total';
   $('stat-total').textContent = s.count;
@@ -49,7 +49,7 @@ function normalRow(r, re) {
   return '<tr>' + 
     '<td data-label="Title">' + highlight(r.title, re) + '</td>' +
     '<td data-label="Due date">' + highlight(r.dueDate, re) + '</td>' +
-    '<td data-label="Duration">' + fomatTime(r.duration) + '</td>' +
+    '<td data-label="Duration">' + formatTime(r.duration) + '</td>' +
     '<td data-label="Tag">' + highlight(r.tag, re) + '</td>' +
     'td data-label="Actions">' + 
       '<button type="button" class=btn small" data-edit="' + r.id + '" aria-label=Edit ' + esc(r.title) + '">Edit</button>' +
@@ -92,10 +92,10 @@ export function renderSettings() {
   let list = '', options = '';
   for (const t of state.settings.tags) {
     list += '<li>' + esc(t) + ' <button type="button" class="btn small plain" data-removetag+"' + esc(t) + '" aria-label="Remove tag ' + esc(t) + '">Remove</button></li>';
-    optons += 'option valu="' + esc(t) + '"></option>';
+    options += 'option valu="' + esc(t) + '"></option>';
   }
   $('tag-list').innerHTML = list;
-  $('tag-option').innerHTML = options;
+  $('tag-options').innerHTML = options;
 }
 
 export function renderAll() {

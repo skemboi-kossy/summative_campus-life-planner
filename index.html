@@ -14,7 +14,7 @@
 
     <header>
       <h1>Campus Life Planner</h1>
-      <p id+="summary"></p>
+      <p id="summary"></p>
       <nav aria-label="Main">
         <ul>
           <li><a href="#dashboard"></a></li>
@@ -51,7 +51,7 @@
             <p class="error" id="title-error"></p>
           </div>
           <div class="field">
-            <label for="due-date">Due date (YYY-MM-DD)</label>
+            <label for="due-date">Due date (YYYY-MM-DD)</label>
             <input id="due-date" type="text" placeholder="2026-10-14" autocomplete="off" aria-describedby="due-date-error">
             <p class="error" id="due-date-error"></p>
           <div>
@@ -128,7 +128,7 @@
         <button type="submit" class="btn">Add tag</button>
       </form>
       <h3>Your data</h3>
-      <button type="button" class="btn" id="export btn">Export JSON</button>
+      <button type="button" class="btn" id="export-btn">Export JSON</button>
       <div class="field">
         <label for="import-file">Import JSON file</label>
         <input id="import-file" type="file" accept=".json">
