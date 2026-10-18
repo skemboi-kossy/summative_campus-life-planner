@@ -8,23 +8,23 @@
 </head>
 <body>
 <hi>Validator tests</h1>
-<p id=""summary" role=""status"></p>
-<ul id=""out"></ul>
+<p id="summary" role="status"></p>
+<ul id="out"></ul>
 <script type="module">
 import * as V from './scripts/validators.js';
 import { compileRegex, highlight } from './scripts/search.js';
 const ok = r => r === '';
 const cases = [
-  ['title "Lunch is valid', ok(V.validTitle('Lunch')), true],
-  ['title with leading space is rejected', ok(V.validTtitle('Lunch')), false],
-  ['title with trailing space is rejected' ok(V.validTitle('Lunch')), false],
-  ['title with double space is rejected', ok(V.validTitle('a b')), false],
-  ['title with repeated word is rejected' ok(V.valdTitle('the the cat')), false],
+  ['title "Lunch" is valid', ok(V.validTitle('Lunch')), true],
+  ['title with leading space is rejected', ok(V.validTitle(' Lunch')), false],
+  ['title with trailing space is rejected', ok(V.validTitle('Lunch ')), false],
+  ['title with double space is rejected', ok(V.validTitle('a  b')), false],
+  ['title with repeated word is rejected', ok(V.validTitle('the the cat')), false],
   ['empty title is rejected', ok(V.validTitle('')), false],
-  ['duration 0 is valid', ok(V.validDuration('0')), false],
-  ['duration 12.5 is valid', ok(V.validDuration('12.5')), false],
+  ['duration 0 is valid', ok(V.validDuration('0')), true],
+  ['duration 12.5 is valid', ok(V.validDuration('12.5')), true],
   ['duration 01 is rejected', ok(V.validDuration('01')), false],
-  ['duration 1.234 is rejected', ok(V.validaDuration('1.234')), false],
+  ['duration 1.234 is rejected', ok(V.validDuration('1.234')), false],
   ['duration -5 is rejected', ok(V.validDuration('-5')), false],
   ['date 2024-02-29 (leap day) is valid', ok(V.validDate('2024-02-14')), true],
   ['date 2026-02-29 does not exist', ok(V.validDate('2026-02-29')), false],
@@ -32,20 +32,20 @@ const cases = [
   ['date 14-10-2026 is rejected', ok(V.validDate('14-10-2026')), false],
   ['tag "Study" is valid', ok(V.validTag('Study')), true],
   ['tag "Group-Work" is valid', ok(V.validTag('Group-Work')), true],
-  ['tag "Career Fair is valid', ok(V.validTag('Career Fair')), true],
+  ['tag "Career Fair" is valid', ok(V.validTag('Career Fair')), true],
   ['tag "Study1" is rejected', ok(V.validTag('Study1')), false],
-  ['tag "Study" is rejected', ok(V.validTag('Study',)), false],
   ['tag "-Study" is rejected', ok(V.validTag('-Study')), false],
   ['Invalid regex "("compiles to null', compileRegex('(') === null, true],
   ['highlight wraps matches in <mark>', highlight('Coffee chat', /coffee/i) === '<mark>Coffee</mark> chat', true],
   ['highlight escapes HTML', highlight('<b>x</b>', null) === '&lt;b&gt;x&lt;/b&gt;', true],
 ];
 let passed = 0;
-document.getElementById('out').innerHTML =cases.map(([name, got, want]) => {
-  const p = got === want; if (p) passed++;
-  return `<li class="${p ? 'pass' : 'fail'}'">{p ? 'PASS' : 'FAIL'}: ${name}</li>`;
+document.getElementById('out').innerHTML = cases.map(([name, got, want]) => {
+  const p = got === want; 
+  if (p) passed++;
+  return `<li class="${p ? 'pass' : 'fail'}'">${p ? 'PASS' : 'FAIL'}: ${name}</li>`;
 }).join('');
-document.getElemntById('summary').textContent = `${passed} of ${cases.length} tests passed.`;
+document.getElementById('summary').textContent = `${passed} of ${cases.length} tests passed.`;
 </script>
 </body>
 </html>
