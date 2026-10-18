@@ -6,7 +6,7 @@ A simple, pink, responsive web app that helps students plan tasks and events. Ea
 
 ## Links
 - Live site (GitHub Pages): https://skemboi-kossy.github.io/summative_campus-life-planner/
-- Demo video (unlisted): PASTE-YOUR-VIDEO-LINK-HERE
+- Demo video (unlisted): https://youtu.be/MVUzqZ8XkvA
 
 ## Features
 - Add, edit (inline in the table row) and delete records, with a confirm before deleting
