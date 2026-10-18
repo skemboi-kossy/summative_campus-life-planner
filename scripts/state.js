@@ -32,8 +32,8 @@ function nextId() {
 export function addRecord(data) {
   const now =new Date().toISOString();
   state.records.push({
-    id: nextId(), title: data.title, dueDate,
-    duration: data.duration, tag:data.tag, createdAt: now, updatedAt: now,
+    id: nextId(), title: data.title, dueDate: data.dueDate,
+    duration: data.duration, tag: data.tag, createdAt: now, updatedAt: now,
   });
   save();
 }
