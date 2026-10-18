@@ -1,340 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" , content="Sandra">
-    <meta name="description" content="This is a Campus Life Planner">
-    <link rel="stylesheet" href="styles/main.css">
-    <title>Campus Life Planner</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1">
+  <meta name="description" content="Campus Life Planner:plan tasks and events with durations and tags.">
+  <title>Campus Life Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-<body>
-    <main>
-        <!-- Header -->
-        <header>
-            <nav>
-                <div class="logo__div">
-                    <a href="#" class="logo">
-                        <svg style="width: 17px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                        </svg>
+    <header>
+      <h1>Campus Life Planner</h1>
+      <p id+="summary"></p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#dashboard"></a></li>
+          <li><a href="#add">Add / Edit</a></li>
+          <li><a href="#records">Records</a></li>
+          <li><a href="#Settings">Settings</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+ 
+    <main id="main"tabindex="-1">
+      <p id="message" role="status"></p>
 
-                    </a>
-                    <div class="logo__title">
-                        <a href="#">Campus Life Planner</a>
-                        <p>5 records - 365 min total</p>
-                    </div>
-                </div>
+      <section id="dashboard" aria-labelledby="dashboard-title">
+        <h2 id="dashboard-title">Dashboard</h2>
+        <div class="cards">
+          <div class="card"><h3>Total records</h3><p class="big" id="stat-total">0</p></div>
+          <div clas="card"><h3>Total planned time<h3><p class="big" id="stat-duration">0</p></div>
+          <div class="card"><h3>Top tag</h3><p class="big" id="stat-tag">None</p></div>
+          <div class="card"><h3>Last 7 days</h3><p class="big" id="stat-week">0</p></div>
+        </div>
+        <p id="cap-message" class="cap" role="status" aria-live="polite"></p>
+      <h3>Planned time per day (last 7 days)</h3>
+      <div id="chart" class="chart" role="img" aria-label="Chart"></div>
+      </section>
 
-                <!-- Right side -->
-                <div id="div__right">
-                    <button id="btn1">
-                        <svg style="width: 17px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
+      <section id="add" aria-labelledby="add title">
+        <h2 id="add-title">Add a record</h2>
+        <form id="task-form"novalidate>
+          <div class="field">
+            <label for="title">Title</label>
+            <input id="title" type="text"autocomplete="off" aria-describedby="title-error">
+            <p class="error" id="title-error"></p>
+          </div>
+          <div class="field">
+            <label for="due-date">Due date (YYY-MM-DD)</label>
+            <input id="due-date" type="text" placeholder="2026-10-14" autocomplete="off" aria-describedby="due-date-error">
+            <p class="error" id="due-date-error"></p>
+          <div>
+          <div class="field">
+            <label for="duration">Duration (minutes)</label>
+            <input id="duration" type="text" autocomplete="off" aria-describedby="duration-error">
+            <p class="error" id="duration-error"></p>
+          </div>
+          <div class="field">
+            <label for="tag">Tag</label>
+            <input id="tag" type="text" list="tag-options" autocomplete="off" aria-describedby="tag-error">
+            <datalist id="tag-options"></datalist>
+            <p class="error" id="tag-error"></p>
+          </div>
+          <button type="submit" class="btn">Save record</button>
+        </form>
+      </section>
 
-                        Add Record
-                    </button>
-                    <button id="btn2">
-                        <svg style="width: 17px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                        </svg>
+      <section id="records" aria-labelledby="records-title">
+      <h2 id="records-title">Records</h2>
+      <div class="controls">
+        <div class="field">
+          <label for="search">Search (regex)</label>
+          <input id="search" type="text" autocomplete="off" placeholder="e.g. study|club or ^@tag:study">
+        </div>
+        <div class="field check">
+          <input id="case-toggle" type="checkbox" checked>
+          <label for="case-toggle">Case-insensitive</label>
+        </div>
+        <div class="field">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option value="dueDate-desc">Due date (newest)</option>
+            <option value="dueDate-asc">Due date (oldest)</option>
+            <option value="title-asc">Title (A to Z)</option>
+            <option value="title-desc">Title (Z to A)</option>
+            <option value="duration-desc">Duration (high to low)</option>
+            <option value="duration-asc">Duration (low to high)</option>
+          </select>
+        </div>
+      </div>
+      <p id="search-status" role="status"></p>
+      <p id="table-message" role="status"></p>
+      <table>
+        <thead>
+          <tr><th scope="col">Title></th><th scope="col">Due date</th></th scope="col">Duration</th><th scope="col">Tag</th><th scope="col">Actions</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
 
-                        Export
-                    </button>
-                    <button id="btn3">
-                        <svg style="width: 17px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
+    <section id="settings" aria-labelledby="settings-title">
+      <h2 id="settings-title">Settings</h2>
+      <div class="field">
+        <label for="unit">Show durations in</label>
+        <select id="unit">
+          <option value="minutes">Minutes</option>
+          <option value="hours">hours</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cap">Weekly time cap (minutes)</label>
+        <input id="cap" type="text" aria-describedby="cap-error">
+        <p class="error" id="cap-error"></p>
+      </div>
+      <h3></h3>Tags</h3>
+      <ul id="tag-list" class="tag-list"></ul> 
+      <form id="tag-form" novalidate>
+        <div class="field">
+          <label for="new-tag">New tag</label>
+          <input id="new-tag" type="text" autocomplete="off" aria-describeby="new-tag-error">
+          <p class="error" id="new-tag-error"></p>
+        </div>
+        <button type="submit" class="btn">Add tag</button>
+      </form>
+      <h3>Your data</h3>
+      <button type="button" class="btn" id="export btn">Export JSON</button>
+      <div class="field">
+        <label for="import-file">Import JSON file</label>
+        <input id="import-file" type="file" accept=".json">
+      </div>
+    </section>
 
-                        Import
-                    </button>
-                </div>
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>Campus Life Planner helps students plan tasks and events with due dates,durations and tags . Search with regex,watch your weekly load, and keep everything saved in your browser.</p>
+      <ul>
+         <li>Github: <a href="https://github.com/skemboi-kossy">skemboi-kossy</a></li>
+         <li>Email: <a href="mailto:s.kemboi@alustudent.com">s.kemboi@alustudent.com</a></li>
+      </ul>
+    </section>
+  </main>
 
-                <button id="menu">
-                    <svg style="width: 23px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
-                    </svg>
-
-
-                </button>
-            </nav>
-        </header>
-
-        <!-- Tab Section -->
-        <section>
-            <div id="tabs">
-                <button id="tab1">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                    </svg>
-
-
-
-                    Dashboard
-                </button>
-                <button id="tab2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
-                    </svg>
-
-
-                    Records
-                </button>
-                <button id="tab3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-
-
-                    Add Record
-                </button>
-                <button id="tab4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                    </svg>
-
-
-                    Settings
-                </button>
-                <button id="tab5">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                    </svg>
-
-
-                    About &amp; Contact
-                </button>
-            </div>
-        </section>
-
-        <!-- Cards -->
-        <section id="cards">
-            <div id="card__holder">
-                <div id="card">
-                    <div id="card__top">
-                        <h5>TOTAL RECORDS</h5>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                        </svg>
-
-                    </div>
-
-                    <div id="card__bottom">
-                        <h4>5</h4>
-                        <p>Enteries logged</p>
-                    </div>
-                </div>
-
-                <div id="card">
-                    <div id="card__top">
-                        <h5>TOTAL DURATION</h5>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-
-
-                    </div>
-
-                    <div id="card__bottom">
-                        <h4>365</h4>
-                        <p>mins</p>
-                    </div>
-                </div>
-
-                <div id="card">
-                    <div id="card__top">
-                        <h5>TOTAL CATEGORY</h5>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
-                        </svg>
-
-
-
-                    </div>
-
-                    <div id="card__bottom">
-                        <h4>5</h4>
-                        <p>Enteries logged</p>
-                    </div>
-                </div>
-
-                <div id="card">
-                    <div id="card__top">
-                        <h5>TOTAL PENDING</h5>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-                        </svg>
-
-
-                    </div>
-
-                    <div id="card__bottom">
-                        <h4>100</h4>
-                        <p>record pending</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="recent">
-                <div id="recent__top">
-                    <div>
-                        <div id="recent__top__title">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-
-                            <h6>Recent Records</h6>
-                        </div>
-                        <p>Last three added records logged into the planner</p>
-                    </div>
-
-                    <a href="#">
-                        View all in Records
-                        <svg style="width: 13px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </svg>
-
-                    </a>
-                </div>
-
-                <article>
-                    <div id="article__title__holder">
-                        <div id="record__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" />
-                            </svg>
-                        </div>
-
-                        <div>
-                            <div id="article__title">
-                                <h4>CS 201: Data Structures Lecture & Discussion</h4>
-                                <p>Study</p>
-                            </div>
-                            <p id="article__footer">
-                                Oct 24, 2024 <span style="font-weight: 500;">90 mins</span> - <span
-                                    style="color: rgb(137, 135, 135);">Added 10 mins ago</span> - <span
-                                    style="font-size: 10px;">rec_0005</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="article__status">
-                        <svg style="width: 15px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                        </svg>
-
-                        Logged
-                    </div>
-                </article>
-
-                <article>
-                    <div id="article__title__holder">
-                        <div id="record__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" />
-                            </svg>
-                        </div>
-
-                        <div>
-                            <div id="article__title">
-                                <h4>CS 201: Data Structures Lecture & Discussion</h4>
-                                <p>Study</p>
-                            </div>
-                            <p id="article__footer">
-                                Oct 24, 2024 <span style="font-weight: 500;">90 mins</span> - <span
-                                    style="color: rgb(137, 135, 135);">Added 10 mins ago</span> - <span
-                                    style="font-size: 10px;">rec_0005</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="article__status">
-                        <svg style="width: 15px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                        </svg>
-
-                        Logged
-                    </div>
-                </article>
-
-                <article>
-                    <div id="article__title__holder">
-                        <div id="record__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" />
-                            </svg>
-                        </div>
-
-                        <div>
-                            <div id="article__title">
-                                <h4>CS 201: Data Structures Lecture & Discussion</h4>
-                                <p>Study</p>
-                            </div>
-                            <p id="article__footer">
-                                Oct 24, 2024 <span style="font-weight: 500;">90 mins</span> - <span
-                                    style="color: rgb(137, 135, 135);">Added 10 mins ago</span> - <span
-                                    style="font-size: 10px;">rec_0005</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div id="article__status">
-                        <svg style="width: 15px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                        </svg>
-
-                        Logged
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
+  <footer><p>Sandra Jepkosgei | African Leadership University | 2026</p></footer>
+  <script type="module" src="scripts/main.js"></script>
 </body>
-
 </html>
+  
+
+
+
+
+        

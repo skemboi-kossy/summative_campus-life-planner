@@ -1,313 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+:root {
+  --pink: #ffe4ee;
+  --accent: #c2255c;
+  --dark: #3b1c2a;
+  --soft: #ffd0e0;
+  --line: #f3b3c8;
+}
+*{box-sizing:border-box; margin: 0; padding: 0; }
+body{font-family:"Poppins" , Arial,sans-serif; background: var(pink); color: var(--dark); line-height: 1.5; }
+a{color: var(--accent);}
+:focus-visible {outline: 3px solid var(--dark); outline-offset: 2px;}
 
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-optical-sizing: auto;
+.skip-link {position:absolute; left: 8px; top: -60px; background: #fff; padding: 8px 12px; border-radius: 8px;}
+.skip-link:focus {top:8px;}
+
+/* Header: phone first (about 360px) */
+header {background: #fff0f6; padding: 16px; border-bottom: 2px solid var(--line);}
+h1 {font-size: 0.85rem; margin-bottom: 8px;}
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px}
+nav a { display: block; padding:8px 12px; background: var(--soft); border-radius: 999px; text-decoration: none; font-weight: 600;}
+nav a:hover { background: var(--line);}
+
+main { padding: 16px; }
+section { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+h2 { color: var(--accent); margin-bottom: 12px;}
+h3 { font-size: 1rem; margin: 12px 0 6px; }
+#message { min-height: 1.5rem; font-weight: 600; margin-bottom: 8px }
+
+
+/* Dashboard */
+.cards { display: grid; grid-template-columns: 1fr; gap: 10px }
+.card { background: var(--pink); border-radius: 12px; padding: 12px; }
+.card h3 {margin: 0; font-size: 0.8rem; text-transform: uppercase; }
+.big {font-size: 1.5rem; font-weight: 700; }
+.cap { margin-top: 12px; padding:10px 14px; border-radius: 10px; background: #e6f9ee; color: #14532d; font-weight: 600; }
+.cap.over { background: #ffe0e0; color: #9b1c1c; }
+.chart { display: flex; align-items: flex-end; gap: 8px; height: 150px; }
+.bar-col {flex: 1; height:100%; display: flex; flex-direction: column;justify-content: flex-end; align-items: center;}
+.bar { width: 100%; min-height: 2px; background: var(--accent); border-radius: 6px 6px 0 0; transform-origin: bottom; animation: grow 0.6s ease-out;}
+.bar-label { font-size: 0.75rem;}
+@keyframes grow {from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+
+/* Forms */
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.field.check { flex-direction: row; align-items: center; gap: 8px }
+label { font-weight: 600; }
+input[type="text"], select { font: inherit; padding: 10px; min-height: 44px; border: 2px solid var(var--accent); border-radius: 10px; width:100% background: #fff; }
+input[type="checkbox"] { width: 20px; height: 20px;}
+input[aria-invalid="true"] { border-color: #9b1c1c; }
+.error { color: #9b1c1c; font-size: 0.85rem; min-height: 1.2rem; }
+.error:not(:empty)::before { content: "Error: "; font-weight:700;}
+.btn { font: inherit; font-weight: 600; min-height: 44px; padding: 8px 20px; background: var(--accent); color: #fff; border: 0; border-radius: 999px; cursor: pointer; transition: transform 0.2s; }
+.btn:hover { transform: scale(1.05); }
+.small { min-height: 36px; padding: 4px 14px; margin-right:6px; }
+.small.plain { background: #fff; color: var(--accent); border: 2px solid var(--accent); }
+.tag-list li { background: var(--soft); border-radius: 999px; padding: 4px 6px 4px 14px; font-weight: 600; }
+#search-status, #table-message { font-size: 0.85rem; min-height: 1.3em; margin: 4px 0; }
+mark { background: #ffe066; padding: 0 2px; }
+
+/* Table: stacked cards on phones */
+table, tbody { display: block; }
+thead { position: absolute; left: -99999px; }
+tr { display: block; background: var(--pink); border-radius: 12px; padding: 8px 12px; margin-bottom: 10px; }
+td { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; }
+td::before { content: attr(data-label); font-weight: 600; }
+td input { flex: 1; min-width: 0; }
+
+footer { text-align: center; padding: 16px; font-size: 0.85rem; }
+
+/* Tablet: 768px */
+@media(min-width: 768px) {
+  header,main { padding-left: 32px; padding-right: 32px; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .controls { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; align-items: end; }
+  table { display: table; border-collapse: collapse; }
+  tbody { display: table-row-group;}
+  thead { position: static; }
+  tr { display: table-row-group; }
+  thead { position: static; }
+  tr { display: table-row; background: none; padding: 0; margin: 0; }
+  td { display: table-cell; padding: 10px; border-bottom: 1px solid var(--line); }
+  td::before { content:none}
+  th { text-align: left; padding: 10px; background: var(--soft); }
 }
 
-svg {
-    width: 17px;
+/* Desktop: 1024px */
+@media (min-width: 1024px) {
+  main { max-width: 1100px; margin: 0 auto; }
+  .cards { grid-template-columns:repeat(4, 1fr); }
 }
 
-main {
-    width: 100%;
-    height: 100%;
-}
-
-header {
-    width: 100%;
-    padding: 20px;
-}
-
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1.4px solid lightgray;
-}
-
-nav .logo__div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-nav .logo__div .logo {
-    width: 30px;
-    height: 30px;
-    background-color: #4F46E5;
-    color: white;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-nav .logo__div .logo__title a {
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-nav .logo__div .logo__title p {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-nav #div__right {
-    display: flex;
-    gap: 5px;
-}
-
-nav #div__right button {
-    border: none;
-    padding: 8px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-}
-
-nav #div__right #btn1 {
-    background-color: #4F46E5;
-    color: white;
-}
-
-nav #div__right #btn2,
-nav #div__right #btn3 {
-    background-color: white;
-    border: 1.5px solid gray;
-}
-
-nav #menu {
-    display: none;
-}
-
-section {
-    width: 100%;
-}
-
-section #tabs {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0px 20px;
-    border-bottom: 1px solid lightgray;
-}
-
-section button {
-    border: none;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    background-color: transparent;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-section button:hover {
-    border-bottom: 2px solid gray;
-    cursor: pointer;
-}
-
-section #tabs #tab1 {
-    color: #4F46E5;
-    border-bottom: 2px solid #4F46E5;
-}
-
-#cards {
-    width: 100%;
-    background-color: #e6e6f0;
-    padding: 20px;
-}
-
-#cards #card__holder {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-}
-
-#cards #card__holder #card {
-    background-color: white;
-    padding: 20px 15px;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-}
-
-
-#cards #card__holder #card #card__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#cards #card__holder #card #card__top h5 {
-    font-size: 10px;
-    color: gray;
-    font-weight: 600;
-}
-
-#cards #card__holder #card #card__bottom {
-    margin-top: 30px;
-    display: flex;
-    align-items: end;
-    gap: 5px;
-}
-
-#cards #card__holder #card #card__bottom p {
-    font-size: 10px;
-}
-
-#cards #recent {
-    width: 100%;
-    margin-top: 20px;
-    background-color: white;
-    padding: 20px 15px;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-}
-
-#cards #recent #recent__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#cards #recent #recent__top div #recent__top__title {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-}
-
-#cards #recent #recent__top div p {
-    font-size: 11px;
-    color: gray;
-}
-
-#cards #recent #recent__top a {
-    display: flex;
-    font-size: 11px;
-    align-items: center;
-    gap: 3px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-#cards #recent article {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-#cards #recent article #article__title__holder {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#cards #recent article #record__icon {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    border-radius: 8px;
-    color: #4F46E5;
-    justify-content: center;
-    align-items: center;
-    background-color: #d2d0f7;
-}
-
-#cards #recent article #article__title {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-
-#cards #recent article #article__title h4 {
-    font-size: 12px;
-    font-weight: 600;
-}
-
-#cards #recent article #article__title p {
-    background-color: #d2d0f7;
-    color: #4F46E5;
-    padding: 5px 10px;
-    font-size: 9px;
-    border-radius: 20px;
-    font-weight: 700;
-}
-
-#cards #recent article #article__footer {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-top: 2px;
-    font-size: 10px;
-}
-
-#cards #recent article #article__status {
-    display: flex;
-    align-items: center;
-    font-size: 10px;
-    background-color: #85F8C4;
-    gap: 2px;
-    padding: 5px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    color: #005137;
+@media (prefers-reduced-motion: reduce) {
+  *{animation: none !important; transition: none !important; }
 }
 
 
 
-
-
-
-/* Responsivess for Mobile */
-@media (max-width: 768px) {
-
-    nav .logo__div {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    nav .logo__div .logo {
-        width: 30px;
-        height: 30px;
-        background-color: #4F46E5;
-        color: white;
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    nav #div__right {
-        display: none;
-    }
-
-    nav #menu {
-        display: block;
-        background-color: transparent;
-        border: none;
-    }
-
-    section #tabs {
-        display: none;
-    }
-
-    #cards #card__holder {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 10px;
-    }
-}

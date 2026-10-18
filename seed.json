@@ -1,0 +1,14 @@
+[
+  {"id":"rec_0001","title":"CS 201: Data Structures Lecture","dueDate":"2026-10-14","duration":90,"tag":"Study","createdAt":"2026-10-07T08:00:00.000Z","updatedAt":"2026-10-07T08:00:00.000Z"},
+  {"id":"rec_0002","title":"Standup 09:30 with project team","dueDate":"2026-10-13","duration":30,"tag":"Group-Work","createdAt":"2026-10-07T08:05:00.000Z","updatedAt":"2026-10-07T08:05:00.000Z"},
+  {"id":"rec_0003","title":"Review review chapter 4 notes","dueDate":"2026-10-12","duration":45,"tag":"Study","createdAt":"2026-10-07T08:10:00.000Z","updatedAt":"2026-10-07T08:10:00.000Z"},
+  {"id":"rec_0004","title":"Robotics Club build session","dueDate":"2026-10-11","duration":120,"tag":"Club","createdAt":"2026-10-07T08:15:00.000Z","updatedAt":"2026-10-07T08:15:00.000Z"},
+  {"id":"rec_0005","title":"Quick stretch break","dueDate":"2026-10-10","duration":0.5,"tag":"Health","createdAt":"2026-10-07T08:20:00.000Z","updatedAt":"2026-10-07T08:20:00.000Z"},
+  {"id":"rec_0006","title":"Career fair prep and CV polish","dueDate":"2026-10-09","duration":150,"tag":"Career Fair","createdAt":"2026-10-07T08:25:00.000Z","updatedAt":"2026-10-07T08:25:00.000Z"},
+  {"id":"rec_0007","title":"Coffee chat with mentor","dueDate":"2026-10-08","duration":60,"tag":"Personal","createdAt":"2026-10-07T08:30:00.000Z","updatedAt":"2026-10-07T08:30:00.000Z"},
+  {"id":"rec_0008","title":"Leap day lab write-up","dueDate":"2024-02-29","duration":75,"tag":"Study","createdAt":"2026-10-07T08:35:00.000Z","updatedAt":"2026-10-07T08:35:00.000Z"},
+  {"id":"rec_0009","title":"New Year goal planning","dueDate":"2025-01-01","duration":20,"tag":"Personal","createdAt":"2026-10-07T08:40:00.000Z","updatedAt":"2026-10-07T08:40:00.000Z"},
+  {"id":"rec_0010","title":"Final exam revision marathon","dueDate":"2026-12-31","duration":1440,"tag":"Study","createdAt":"2026-10-07T08:45:00.000Z","updatedAt":"2026-10-07T08:45:00.000Z"},
+  {"id":"rec_0011","title":"Submit lab report v2.0 (final)","dueDate":"2026-10-14","duration":15,"tag":"Study","createdAt":"2026-10-07T08:50:00.000Z","updatedAt":"2026-10-07T08:50:00.000Z"},
+  {"id":"rec_0012","title":"Tea with the volunteering team","dueDate":"2026-10-13","duration":0.25,"tag":"Club","createdAt":"2026-10-07T08:55:00.000Z","updatedAt":"2026-10-07T08:55:00.000Z"}
+]
