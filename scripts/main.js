@@ -17,7 +17,7 @@ function addTagIfNew(tag) {
 //  ---------- Add form ----------
 const checks = [
   { input: 'title', error: 'title-error' , test: validTitle },
-  { input: 'due-date', error: 'due-date-error', test: validDuration },
+  { input: 'due-date', error: 'due-date-error', test: validDate },
   { input: 'duration' , error: 'duration-error', test: validDuration},
   { input: 'tag' , error:'tag-error', test: validTag },
 ];
