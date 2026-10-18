@@ -9,7 +9,7 @@ function say(text) { $('message').textContent = text; }
 
 function addTagIfNew(tag) {
   if (!state.settings.tags.includes(tag)) {
-    state.settings.tags.includes(tag);
+    state.settings.tags(tag);
     saveSettings();
   }
 }
@@ -39,8 +39,8 @@ $('task-form').addEventListener('submit', function (e) {
   }
   const data = {
     title:$('title').value,
-    dueDate:$('due date').value,
-    duration:perseFloat($('duration').value),
+    dueDate:$('due-date').value,
+    duration:parseFloat($('duration').value),
     tag: $('tag').value,
   };
   addTagIfNew(data.tag);
@@ -49,6 +49,12 @@ $('task-form').addEventListener('submit', function (e) {
   renderAll();
   say('Record added.');
 });
+
+// ---------- Search and sort ----------
+$('search').addEventListener('input', function (e) { state.search = e.target.value; renderTable(); });
+$('case-toggle').addEventListener('change', function (e) { state.ignoreCase = e.target.checked; renderTable(); });
+$('sort').addEventListener('change', function (e) { state.sortBy = e.target.value; renderTable(); });
+
 
 // ---------- Table buttons: edit, save, cancel, delete ----------
 $('rows').addEventListener('click', function (e) {
@@ -72,13 +78,13 @@ $('rows').addEventListener('click', function (e) {
       $('table-message').textContent = 'Error: ' + problem;
       return;
     }
-    addTadIfNew(tag);
+    addTagIfNew(tag);
     updateRecord(btn.dataset.save, { title, dueDate, duration: parseFloat(duration), tag });
     state.editingId = null;
     renderAll();
     say('Record updated.');
   } else if (btn.dataset.del) {
-    const rec = state.rceords.find(r => r.id === btn.dataset.del);
+    const rec = state.records.find(r => r.id === btn.dataset.del);
     if (rec && confirm('Delete "'  + rec.title + '"?')) {
       deleteRecord(rec.id);
       renderAll();
@@ -109,7 +115,7 @@ $('cap').addEventListener('change', function (e) {
 
 
 $('tag-form').addEventListener('submit' ,function (e) {
-  e.preventionDefault();
+  e.preventDefault();
   const tag = $('new-tag').value;
   const problem = validTag (tag);
   $('new-tag-error').textContent = problem;
@@ -124,7 +130,7 @@ $('tag-form').addEventListener('submit' ,function (e) {
 $('tag-list').addEventListener('click' , function (e) {
   const btn = e.target.closest('button');
   if (!btn) return;
-  state.settings.tags = state.settings.tags.filter(t = t !== btn.dataset.removetag);
+  state.settings.tags = state.settings.tags.filter(t => t !== btn.dataset.removetag);
   saveSettings();
   renderAll();
   say('Tag removed.');

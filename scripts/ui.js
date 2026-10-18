@@ -6,14 +6,14 @@ const $ = id => document.getElementById(id);
 // Durations are stored in minutes. This shows them as minutes or hours.
 export function formatTime(mins) {
   if (state.settings.unit === 'hours') return (mins / 60).toFixed(2) + ' h';
-  return Math.round(mins* 100) / 100 + 'min';
+  return Math.round(mins* 100) / 100 + ' min';
 }
 
 
 export function renderStats() {
   const s = getStats();
   const cap = state.settings.cap;
-  $('summary').textContent = s.count + ' record - ' + formatTime(s.total) + 'total';
+  $('summary').textContent = s.count + ' records - ' + formatTime(s.total) + 'total';
   $('stat-total').textContent = s.count;
   $('stat-duration').textContent = formatTime(s.total);
   $('stat-tag').textContent = s.topTag;
@@ -29,7 +29,7 @@ if (s.week > cap) {
 } else {
   msg.setAttribute('aria-live', 'polite');
   msg.className = 'cap';
-  msg.textContent = formatTime(cap - s.week) + ' left under your weekly cap of' + formatTime(cap) + '-';
+  msg.textContent = formatTime(cap - s.week) + ' left under your weekly cap of ' + formatTime(cap) + '.';
 }
 
 // Simple bar chart

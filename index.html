@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width", initial-scale="1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Campus Life Planner:plan tasks and events with durations and tags.">
   <title>Campus Life Planner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,23 +17,23 @@
       <p id="summary"></p>
       <nav aria-label="Main">
         <ul>
-          <li><a href="#dashboard"></a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
           <li><a href="#add">Add / Edit</a></li>
           <li><a href="#records">Records</a></li>
-          <li><a href="#Settings">Settings</a></li>
+          <li><a href="#settings">Settings</a></li>
           <li><a href="#about">About</a></li>
         </ul>
       </nav>
     </header>
  
-    <main id="main"tabindex="-1">
+    <main id="main" tabindex="-1">
       <p id="message" role="status"></p>
 
       <section id="dashboard" aria-labelledby="dashboard-title">
         <h2 id="dashboard-title">Dashboard</h2>
         <div class="cards">
           <div class="card"><h3>Total records</h3><p class="big" id="stat-total">0</p></div>
-          <div clas="card"><h3>Total planned time<h3><p class="big" id="stat-duration">0</p></div>
+          <div clas="card"><h3>Total planned time</h3><p class="big" id="stat-duration">0</p></div>
           <div class="card"><h3>Top tag</h3><p class="big" id="stat-tag">None</p></div>
           <div class="card"><h3>Last 7 days</h3><p class="big" id="stat-week">0</p></div>
         </div>
@@ -42,19 +42,19 @@
       <div id="chart" class="chart" role="img" aria-label="Chart"></div>
       </section>
 
-      <section id="add" aria-labelledby="add title">
+      <section id="add" aria-labelledby="add-title">
         <h2 id="add-title">Add a record</h2>
-        <form id="task-form"novalidate>
+        <form id="task-form" novalidate>
           <div class="field">
             <label for="title">Title</label>
-            <input id="title" type="text"autocomplete="off" aria-describedby="title-error">
+            <input id="title" type="text" autocomplete="off" aria-describedby="title-error">
             <p class="error" id="title-error"></p>
           </div>
           <div class="field">
             <label for="due-date">Due date (YYYY-MM-DD)</label>
             <input id="due-date" type="text" placeholder="2026-10-14" autocomplete="off" aria-describedby="due-date-error">
             <p class="error" id="due-date-error"></p>
-          <div>
+          </div>
           <div class="field">
             <label for="duration">Duration (minutes)</label>
             <input id="duration" type="text" autocomplete="off" aria-describedby="duration-error">
@@ -97,7 +97,7 @@
       <p id="table-message" role="status"></p>
       <table>
         <thead>
-          <tr><th scope="col">Title></th><th scope="col">Due date</th></th scope="col">Duration</th><th scope="col">Tag</th><th scope="col">Actions</th></tr>
+          <tr><th scope="col">Title></th><th scope="col">Due date</th><th scope="col">Duration</th><th scope="col">Tag</th><th scope="col">Actions</th></tr>
         </thead>
         <tbody id="rows"></tbody>
       </table>
@@ -117,12 +117,12 @@
         <input id="cap" type="text" aria-describedby="cap-error">
         <p class="error" id="cap-error"></p>
       </div>
-      <h3></h3>Tags</h3>
+      <h3>Tags</h3>
       <ul id="tag-list" class="tag-list"></ul> 
       <form id="tag-form" novalidate>
         <div class="field">
           <label for="new-tag">New tag</label>
-          <input id="new-tag" type="text" autocomplete="off" aria-describeby="new-tag-error">
+          <input id="new-tag" type="text" autocomplete="off" aria-describedby="new-tag-error">
           <p class="error" id="new-tag-error"></p>
         </div>
         <button type="submit" class="btn">Add tag</button>
